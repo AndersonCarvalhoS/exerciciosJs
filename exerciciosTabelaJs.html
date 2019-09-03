@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        table {
+            width: 100%;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        table#t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        table#t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Exercicios com Array e Tabelas</h2><br>
+
+    <textarea id="json"></textarea>
+    <input type="button" onclick="testar();" value="Testar" />
+    <div id="exibetabela"></div>
+    <script>
+
+        function testar() {
+            let json = document.getElementById("json").value;
+            let obj = JSON.parse(json)
+            let item = obj.carros
+            var texto = ""
+
+            texto += "<table id=t01>"
+
+            for (let i = 0; i < 11; i++) {
+                texto += "<tr>"
+                for (let j = 0; j < 5; j++) {
+                    if (i == 0) {
+                        if (j == 0)
+                            texto +=`<th> FABRICANTE </th>`
+                        if (j == 1)
+                            texto +=`<th> MODELO </th>`
+                        if (j == 2)
+                            texto +=`<th> ANO </th>`
+                        if (j == 3)
+                            texto +=`<th> COMBUSTIVEL </th>`
+                    } else {
+                        if (j == 0)
+                            texto += `<td> ${item[i-1].fabricante} </td>`
+                        if (j == 1)
+                            texto += `<td> ${item[i-1].modelo} </td>`
+                        if (j == 2)
+                            texto += `<td> ${item[i-1].ano} </td>`
+                        if (j == 3)
+                            texto += `<td> ${item[i-1].combustivel} </td>`
+                    }
+
+                }
+                texto += "</tr>"
+            }
+            texto += "</table>"
+            document.getElementById("exibetabela").innerHTML = texto;
+        }
+
+    </script>
+</body>
+
+</html>

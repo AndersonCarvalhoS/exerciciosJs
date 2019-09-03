@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+</head>
+
+<body>
+    <textarea id="json"></textarea>
+    <input type="button" onclick="testar();" value="Testar" />
+</body>
+<script>
+    function testar() {
+        var json = document.getElementById('json').value;
+
+        var obj = JSON.parse(json);
+
+        for (i in obj.carros) {
+            var item = obj.carros[i];
+
+            var txt = "FABRICANTE " + item.fabricante +
+                " / MODELO " + obj.carros[0].modelo +
+                " / ANO " + obj.carros[0].ano +
+                " / COMBUSTIVEL " + obj.carros[0].combustivel;
+
+            console.log(txt);
+        }
+    }
+</script>
+
+</html>
